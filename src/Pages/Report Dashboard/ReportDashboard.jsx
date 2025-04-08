@@ -1,21 +1,21 @@
 // src/pages/ReportDashboard.jsx
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ref, onValue } from "firebase/database";
 import { database } from "../../firebase";
 import BarChart from "../../Components/Bar Chart/BarChart";
 
 const ReportDashboard = () => {
   const [totalTransactions, setTotalTransactions] = useState(100); // Assuming total transactions are 40
-  const [totalFraud, setTotalFraud] = useState(0);
+  const [totalFraud, setTotalFraud] = useState(3);
   const [securedTransactions, setSecuredTransactions] = useState(0);
 
   useEffect(() => {
-    // const fetchFraudData = () => {
+    const fetchFraudData = () => {
       const transactionsRef = ref(database, 'fraudulent_transactions');
-
       onValue(transactionsRef, (snapshot) => {
         const data = snapshot.val();
+        console.log("🚀 ~ onValue ~ data:", data)
         if (data) {
           let fraudCount = 0;
           Object.values(data).forEach(transaction => {
@@ -27,11 +27,12 @@ const ReportDashboard = () => {
           setSecuredTransactions(totalTransactions - fraudCount);
         }
       });
-    // };
+
+    };
     
-    // fetchFraudData();
-    setTotalFraud(3);
-    setSecuredTransactions(97);
+    fetchFraudData();
+    // setTotalFraud(3);
+    // setSecuredTransactions(97);
   }, [totalTransactions]);
 
   return (

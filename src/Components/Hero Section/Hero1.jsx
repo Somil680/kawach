@@ -1,4 +1,3 @@
-import React from "react";
 import HeroVideo1 from "../../assets/Images/Home/Hero1/HeroVideo1.gif";
 import { Link } from "react-router-dom";
 import './Hero.css'

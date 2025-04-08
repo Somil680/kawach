@@ -155,7 +155,7 @@ const NavbarFinal = () => {
                     className="sm:w-[3.5vw] w-[15vw] sm:pr-2 max-md:px-2 max-md:pl-3  "
                   />
                   <h1 className="sm:text-xl text-lg text-[#ffffff] w-full">
-                    Kawach
+                    Ease Rep.
                   </h1>
                 </Link>
               </div>
